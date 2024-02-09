@@ -5,6 +5,7 @@
 #                                    #
 ######################################
 
+# Wee
 
 # importing PIL.Image library and os library
 from PIL import Image #from PIL import Image 
