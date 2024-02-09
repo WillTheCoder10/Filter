@@ -38,7 +38,6 @@ if scale != 0:
 #    Example Filter    #
 ########################
 def gray():
-    print("Code for grayscale")
     # Creates an ImageCore Object from original image
     pixels = img.getdata()
     # Creates empty array to hold new pixel values
@@ -81,7 +80,6 @@ def gray():
 #####################
 
 def dotted():
-    print("Code for dotted")
     # Creates an ImageCore Object from original image
     pixels = img.getdata()
     # Creates empty array to hold new pixel values
@@ -93,16 +91,14 @@ def dotted():
     # Starts at the first pixel in the image
     location = 0
     # Continues until it has looped through all pixels
-    while location < len(new_pixels):
-        # Gets the current color of the pixel at location
-        p = new_pixels[location]
+    for location, p in enumerate(new_pixels):
         # Splits color into red, green and blue components
         r = p[0]
         g = p[1]
         b = p[2]
         # Perform pixel manipulation and stores results
         # to a new red, green and blue components
-        if location % 10 == 0 or location-5 % 10 == 0:
+        if location % 4 == 0 or location-2 % 4 == 0:
             newr, newg, newb = 0, 0, 0
         else:
             newr, newg, newb = r, g, b
@@ -124,7 +120,7 @@ def dotted():
 #####################################
 
 def channel():
-    print("Code for channels")
+    print("Channel Options:")
     # Creates an ImageCore Object from original image
     pixels = img.getdata()
     # Creates empty array to hold new pixel values
@@ -137,7 +133,7 @@ def channel():
     location = 0
     # Continues until it has looped through all pixels
 
-    chnl = input("What channel? R, G, or B?").lower()
+    chnl = input("What channel? R, G, or B? ").lower()
 
     while all([chnl != "r" and chnl != "red", chnl != "g" and chnl != "green", chnl != "b" and chnl != "blue"]):
         print("Try again. Choose an option from the given choices.")
@@ -171,7 +167,7 @@ def channel():
     return newImage
 
 def filter3():
-    print("Code for filter3")
+    print("filter3 Options:")
     newImage = img
     return newImage
 
@@ -192,9 +188,9 @@ f3 = "filter3"
 
 # Apply multiple filters through prompts with the user
 print("\nThe following prompt will ask you which filter to apply to the combined filter. It will keep asking until you answer 'none'.")
-answer = input("\nWhich filter do you want me to apply?\n gray\n " +  f1 + "\n " + f2 + "\n " + f3 + "\n none\n\n")
+answer = input(f"\nWhich filter do you want me to apply?\n gray\n {f1}\n {f2}\n {f3}\n none\n\n")
 while answer != "gray" and answer != f1 and answer != f2 and answer != f3 and answer != "none":
-    answer = input("\nIncorrect filter, please enter:\n gray\n " +  f1 + "\n " + f2 + "\n " + f3 + "\n none\n\n")
+    answer = input(f"\nIncorrect filter, please enter:\n gray\n {f1}\n {f2}\n {f3}\n none\n\n")
 
 while answer == "gray" or answer == f1 or answer == f2 or answer == f3:
     if answer == "gray":
@@ -208,9 +204,9 @@ while answer == "gray" or answer == f1 or answer == f2 or answer == f3:
     else:
         break
     print("Filter \"" + answer + "\" applied...")
-    answer = input("\nWhich filter do you want me to apply next?\n gray\n " +  f1 + "\n " + f2 + "\n " + f3 + "\n none\n\n")
+    answer = input(f"\nWhich filter do you want me to apply next?\n gray\n {f1}\n {f2}\n {f3}\n none\n\n")
     while answer != "gray" and answer != f1 and answer != f2 and answer != f3 and answer != "none":
-        answer = input("\nIncorrect filter, please enter:\n gray\n " +  f1 + "\n " + f2 + "\n " + f3 + "\n none\n\n")
+        answer = input(f"\nIncorrect filter, please enter:\n gray\n {f1}\n {f2}\n {f3}\n none\n\n")
 
 print("Combined filter being created...Done")
 
